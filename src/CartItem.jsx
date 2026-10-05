@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { decrementQuantity, incrementQuantity, removeItem, selectCartItems, selectItemCount, selectTotalCents } from './CartSlice.jsx';
+import { updateQuantity, removeItem, selectCartItems, selectItemCount, selectTotalCents } from './CartSlice.jsx';
 import { money } from './format.js';
 
 export default function CartItem() {
@@ -15,9 +15,9 @@ export default function CartItem() {
       <section className="cart-items" aria-label="Cart items">{items.map(item => <article className="cart-item" key={item.id} aria-label={item.name}>
         <img src={item.image} alt={item.name} width="140" height="140" />
         <div className="cart-item-details"><h2>{item.name}</h2><p>Unit price: {money(item.priceCents)}</p><div className="item-actions"><div className="quantity-controls" role="group" aria-label={`${item.name} quantity`}>
-          <button aria-label={`Decrease ${item.name} quantity`} disabled={item.quantity === 1} onClick={() => dispatch(decrementQuantity(item.id))}>−</button>
+          <button aria-label={`Decrease ${item.name} quantity`} disabled={item.quantity === 1} onClick={() => dispatch(updateQuantity({ id: item.id, quantity: item.quantity - 1 }))}>−</button>
           <span aria-live="polite" aria-label={`${item.name} quantity`}>{item.quantity}</span>
-          <button aria-label={`Increase ${item.name} quantity`} onClick={() => dispatch(incrementQuantity(item.id))}>+</button>
+          <button aria-label={`Increase ${item.name} quantity`} onClick={() => dispatch(updateQuantity({ id: item.id, quantity: item.quantity + 1 }))}>+</button>
         </div><button className="delete-button" aria-label={`Delete ${item.name}`} onClick={() => dispatch(removeItem(item.id))}>Delete</button></div></div>
         <div className="item-total"><small>Item total</small><strong>{money(item.priceCents * item.quantity)}</strong></div>
       </article>)}<Link className="back-link" to="/plants">← Continue Shopping</Link></section>

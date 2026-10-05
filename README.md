@@ -58,7 +58,7 @@ paradise-nursery/
 | 2 | `src/AboutUs.jsx` | Paradise Nursery company details and mission |
 | 3 | `src/App.css` | `.landing-hero` uses a bundled background image with a readable gradient overlay |
 | 4 | `src/App.jsx` | Landing page with Paradise Nursery company name and Get Started link to Plants |
-| 5 | `src/CartSlice.jsx` | `addItem`, `incrementQuantity`, `decrementQuantity`, `removeItem`; Redux selectors for item count and total |
+| 5 | `src/CartSlice.jsx` | Required `addItem()`, `removeItem()`, and `updateQuantity()` reducers; additional increment/decrement actions; Redux selectors for item count and total |
 | 6 | `src/ProductList.jsx` | Three categories, six unique plants each; image, name, description, price, disabled-after-add buttons; shared navbar rendered by App |
 | 7 | `src/CartItem.jsx` | Total quantity and amount, each image/name/unit price/item total, +/− controls, Delete, Coming Soon checkout, Continue Shopping; shared navbar rendered by App |
 
@@ -67,6 +67,7 @@ paradise-nursery/
 - The badge counts total units, not just distinct plants. Two Snake Plants plus one ZZ Plant shows **3**.
 - Adding a plant sets its quantity to one and disables its product button. Removing it enables the button again.
 - Decrease stops at one; use Delete to remove the last unit. The minus button is disabled at one.
+- Both quantity controls dispatch `updateQuantity({ id, quantity })`, the exact reducer required by the submission rubric. Invalid quantities and unknown plant IDs are ignored.
 - Prices are stored as integer cents; totals are the sum of unit price × quantity, formatted in USD.
 - Empty carts display a $0.00 total and Continue Shopping link.
 - Checkout displays **Coming Soon!** and does not place an order or collect payment.
@@ -80,7 +81,7 @@ Hash routing keeps routes usable on static hosts, including GitHub Pages, withou
 - `/#/plants` — Product Listing
 - `/#/cart` — Cart
 
-Vite uses relative asset paths (`base: './'`) so the build works beneath a repository subdirectory. For hosting, deploy the **contents of `dist/`** after running `npm run build`; source files must first be built. For assignment submission, upload the source project to GitHub and follow `SUBMISSION.md` to collect seven direct file URLs. No GitHub repository or public deployment is created by this ZIP.
+Vite uses relative asset paths (`base: './'`) so the build works beneath a repository subdirectory. For hosting, deploy the **contents of `dist/`** after running `npm run build`; source files must first be built. For assignment submission, use the seven direct public GitHub file URLs in `SUBMISSION.md`. Repository: https://github.com/sampath7670/Paradise-Nursery. A hosted application deployment is separate from source publication.
 
 ## Assets and accessibility
 

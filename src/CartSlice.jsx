@@ -10,6 +10,13 @@ const cartSlice = createSlice({
         state.items.push({ ...payload, quantity: 1 });
       }
     },
+    updateQuantity(state, { payload: { id, quantity } }) {
+      const item = state.items.find(item => item.id === id);
+      // Quantities must be positive whole numbers. Use removeItem to delete.
+      if (item && Number.isSafeInteger(quantity) && quantity >= 1) {
+        item.quantity = quantity;
+      }
+    },
     incrementQuantity(state, { payload: id }) {
       const item = state.items.find(item => item.id === id);
       if (item) item.quantity += 1;
@@ -24,7 +31,7 @@ const cartSlice = createSlice({
   },
 });
 
-export const { addItem, incrementQuantity, decrementQuantity, removeItem } = cartSlice.actions;
+export const { addItem, removeItem, updateQuantity, incrementQuantity, decrementQuantity } = cartSlice.actions;
 export const selectCartItems = state => state.cart.items;
 export const selectItemCount = state => state.cart.items.reduce((count, item) => count + item.quantity, 0);
 // Integer cents keep all cart arithmetic exact.

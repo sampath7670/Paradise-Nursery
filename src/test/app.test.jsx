@@ -7,7 +7,7 @@ import { MemoryRouter } from 'react-router-dom';
 import App from '../App.jsx';
 import { createAppStore } from '../store.js';
 import { categories } from '../plants.js';
-import { addItem, incrementQuantity, decrementQuantity, removeItem, selectItemCount, selectTotalCents } from '../CartSlice.jsx';
+import { addItem, incrementQuantity, decrementQuantity, updateQuantity, removeItem, selectItemCount, selectTotalCents } from '../CartSlice.jsx';
 
 function setup(route = '/') {
   const store = createAppStore();
@@ -16,6 +16,22 @@ function setup(route = '/') {
 }
 
 describe('Rubric coverage', () => {
+  it('updates quantities through the required reducer and rejects invalid quantities', () => {
+    const store = createAppStore();
+    const plant = categories[0].plants[0];
+    store.dispatch(addItem(plant));
+    store.dispatch(updateQuantity({ id: plant.id, quantity: 3 }));
+    expect(selectItemCount(store.getState())).toBe(3);
+    expect(selectTotalCents(store.getState())).toBe(5400);
+    for (const quantity of [0, -1, 1.5, NaN, Infinity, '2']) {
+      store.dispatch(updateQuantity({ id: plant.id, quantity }));
+      expect(selectItemCount(store.getState())).toBe(3);
+    }
+    store.dispatch(updateQuantity({ id: 'missing', quantity: 2 }));
+    expect(selectItemCount(store.getState())).toBe(3);
+    store.dispatch(updateQuantity({ id: plant.id, quantity: 1 }));
+    expect(selectTotalCents(store.getState())).toBe(1800);
+  });
   it('has three categories of six unique plants with images, descriptions and prices', () => {
     expect(categories).toHaveLength(3);
     const plants = categories.flatMap(c => c.plants);

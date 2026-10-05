@@ -1,19 +1,19 @@
 # Assignment submission links
 
-1. Create a GitHub repository, for example `paradise-nursery`.
-2. Upload the **contents** of this project folder so `README.md`, `package.json`, and `src/` appear at the repository root. Include `public/`, `package-lock.json`, and the configuration files. Do not upload `node_modules/` or `dist/`.
-3. Open each required file on GitHub and copy its URL into the corresponding assignment answer.
+Repository: https://github.com/sampath7670/Paradise-Nursery
 
-Replace `YOUR-USERNAME`, `YOUR-REPOSITORY`, and `main` below with your actual account, repository, and branch. These are templates, not already published links.
+Submit these public file URLs for the seven assignment questions:
 
-| Task | File URL template |
-| --- | --- |
-| 1 | `https://github.com/YOUR-USERNAME/YOUR-REPOSITORY/blob/main/README.md` |
-| 2 | `https://github.com/YOUR-USERNAME/YOUR-REPOSITORY/blob/main/src/AboutUs.jsx` |
-| 3 | `https://github.com/YOUR-USERNAME/YOUR-REPOSITORY/blob/main/src/App.css` |
-| 4 | `https://github.com/YOUR-USERNAME/YOUR-REPOSITORY/blob/main/src/App.jsx` |
-| 5 | `https://github.com/YOUR-USERNAME/YOUR-REPOSITORY/blob/main/src/CartSlice.jsx` |
-| 6 | `https://github.com/YOUR-USERNAME/YOUR-REPOSITORY/blob/main/src/ProductList.jsx` |
-| 7 | `https://github.com/YOUR-USERNAME/YOUR-REPOSITORY/blob/main/src/CartItem.jsx` |
+| Task | File | Public GitHub URL |
+| --- | --- | --- |
+| 1 | README.md | https://github.com/sampath7670/Paradise-Nursery/blob/master/README.md |
+| 2 | AboutUs.jsx | https://github.com/sampath7670/Paradise-Nursery/blob/master/src/AboutUs.jsx |
+| 3 | App.css | https://github.com/sampath7670/Paradise-Nursery/blob/master/src/App.css |
+| 4 | App.jsx | https://github.com/sampath7670/Paradise-Nursery/blob/master/src/App.jsx |
+| 5 | CartSlice.jsx | https://github.com/sampath7670/Paradise-Nursery/blob/master/src/CartSlice.jsx |
+| 6 | ProductList.jsx | https://github.com/sampath7670/Paradise-Nursery/blob/master/src/ProductList.jsx |
+| 7 | CartItem.jsx | https://github.com/sampath7670/Paradise-Nursery/blob/master/src/CartItem.jsx |
 
-Check that your evaluator can access the repository and that every link opens the correctly cased filename. Submit these file links, rather than only the repository homepage or a deployed site link.
+Task 5's exact required reducers are implemented and exported in src/CartSlice.jsx: addItem(), removeItem(), and updateQuantity(). The cart's plus/minus controls dispatch updateQuantity().
+
+The branch is master. Submit each individual file link rather than only the repository homepage. Review the README rubric checklist for coverage details.
